@@ -63,8 +63,18 @@ function removeDepartment(name) {
     if (foundDepartment) {
         Department = Department.filter(department => department.name.toLowerCase() !== name.toLowerCase());
         return `Department ${name} removed successfully!`;
-    } else {
+    } else { 
         return `Department ${name} not found!`;
+    }
+}
+
+function removeEmployee(departmentName, employeeName) { 
+    let foundDepartment = searchDepartment(departmentName);
+    if (foundDepartment) {
+        foundDepartment.employees = foundDepartment.employees.filter(employee => employee.name.toLowerCase() !== employeeName.toLowerCase());
+        return `Employee ${employeeName} removed successfully from ${departmentName} department!`;
+    } else {
+        return `Employee ${employeeName} not found in ${departmentName} department!`;
     }
 }
 
